@@ -4,10 +4,10 @@
   "description": "Chessboard pattern with ArUco markers for robust detection",
   "is_planar": true,
   "parameters": {
-    "width": 9,
-    "height": 7,
-    "square_size": 0.04,
-    "marker_size": 0.02,
+    "width": 12,
+    "height": 9,
+    "square_size": 0.028,
+    "marker_size": 0.021,
     "dictionary_id": 1
   }
 }

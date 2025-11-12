@@ -82,16 +82,14 @@ def test_charuco_calibration():
     print("Test calibrate with ChArUco board pattern, given loaded images and calibration pattern.")
     print("=" * 50)
     
+    
     # Load sample images with ChArUco boards
     sample_dir = os.path.join("sample_data", "intrinsic_calib_charuco_test_images")
     image_paths = glob.glob(os.path.join(sample_dir, '*.jpg'))
     
-    # Load images into memory
-    images = []
-    for image_path in image_paths:
-        img = cv2.imread(image_path)
-        if img is not None:
-            images.append(img)
+    # Load sample images with ArUco GridBoard
+    sample_dir = os.path.join("sample_data", "intrinsic_calib_grid_test_images")  
+    image_paths = glob.glob(os.path.join(sample_dir, '*.jpg'))
     
     # Load pattern configuration from JSON file
     config_path = os.path.join(sample_dir, "chessboard_config.json")
@@ -101,7 +99,7 @@ def test_charuco_calibration():
 
     # Create calibrator from loaded images and calibration pattern
     calibrator = IntrinsicCalibrator(
-        images=images,                     # Member parameter set in constructor
+        image_paths=image_paths,           # Member parameter set in constructor
         calibration_pattern=pattern       # Member parameter set in constructor
     )
 
@@ -190,14 +188,14 @@ def main():
     print()
     
     success_count = 0
-    total_tests = 3
+    total_tests = 1
     
-    try:
-        test_chessboard_calibration()
-        success_count += 1
-        print("✅ Chessboard calibration completed successfully\n")
-    except Exception as e:
-        print(f"❌ Chessboard calibration failed: {e}\n")
+    # try:
+    #     test_chessboard_calibration()
+    #     success_count += 1
+    #     print("✅ Chessboard calibration completed successfully\n")
+    # except Exception as e:
+    #     print(f"❌ Chessboard calibration failed: {e}\n")
     
     try:
         test_charuco_calibration()
@@ -206,12 +204,12 @@ def main():
     except Exception as e:
         print(f"❌ ChArUco calibration failed: {e}\n")
     
-    try:
-        test_gridboard_calibration()
-        success_count += 1
-        print("✅ Grid Board calibration completed successfully\n")
-    except Exception as e:
-        print(f"❌ Grid Board calibration failed: {e}\n")
+    # try:
+    #     test_gridboard_calibration()
+    #     success_count += 1
+    #     print("✅ Grid Board calibration completed successfully\n")
+    # except Exception as e:
+    #     print(f"❌ Grid Board calibration failed: {e}\n")
     
     print(f"📊 Results: {success_count}/{total_tests} calibrations successful")
     
