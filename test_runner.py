@@ -122,11 +122,11 @@ def check_environment():
                 import_name = "cv2"
             elif package == "PyYAML":
                 import_name = "yaml"
-            elif package == "Pillow":
+            elif package == "pillow":
                 import_name = "PIL"
-            elif package == "Flask":
+            elif package == "flask":
                 import_name = "flask"
-            elif package == "Werkzeug":
+            elif package == "werkzeug":
                 import_name = "werkzeug"
             
             __import__(import_name)

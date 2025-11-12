@@ -2,21 +2,21 @@
 
 # Core dependencies
 numpy>=1.21.0
-opencv-contrib-python>=4.8.0  # Updated for ChArUco support (includes contrib modules)
+#opencv-contrib-python>=4.8.0  # Updated for ChArUco support (includes contrib modules)
 scipy>=1.7.0
 
 # YAML export support for OpenCV compatibility
 PyYAML>=6.0
 
 # Web framework
-Flask>=2.0.0
-Werkzeug>=2.0.0
+flask>=2.0.0
+werkzeug>=2.0.0
 
 # Optimization (for eye-in-hand calibration)
 nlopt>=2.7.0
 
 # File handling and data processing
-Pillow>=8.0.0
+pillow>=8.0.0
 
 # Optional: for development and testing
 pytest>=6.0.0
