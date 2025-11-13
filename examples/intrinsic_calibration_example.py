@@ -87,10 +87,6 @@ def test_charuco_calibration():
     sample_dir = os.path.join("sample_data", "intrinsic_calib_charuco_test_images")
     image_paths = glob.glob(os.path.join(sample_dir, '*.jpg'))
     
-    # Load sample images with ArUco GridBoard
-    sample_dir = os.path.join("sample_data", "intrinsic_calib_grid_test_images")  
-    image_paths = glob.glob(os.path.join(sample_dir, '*.jpg'))
-    
     # Load pattern configuration from JSON file
     config_path = os.path.join(sample_dir, "chessboard_config.json")
     with open(config_path, 'r') as f:
@@ -109,8 +105,10 @@ def test_charuco_calibration():
         distCoeffs=None,            # Function parameter  
         flags=0,                    # Function parameter
         criteria=None,              # Function parameter
-        verbose=False
+        verbose=True
     )
+
+    print(result)
     
     if result['rms_error'] < 0.5:
         print(f"\n✅ Calibration successful!")
@@ -128,6 +126,13 @@ def test_charuco_calibration():
             print(f"   📊 JSON Data: {report_result['json_data']}")
     else:
         print(f"\n❌ Calibration failed - RMS error too high!")
+
+        # TODOLIZA remove after debugging
+        print("\n📄 Generating calibration report...")
+        report_result = calibrator.generate_calibration_report("data/results/intrinsic_calibration_example_charuco")
+        if report_result:
+            print(f"   📄 HTML Report: {report_result['html_report']}")
+            print(f"   📊 JSON Data: {report_result['json_data']}")
         raise ValueError("ChArUco calibration failed")
 
 
